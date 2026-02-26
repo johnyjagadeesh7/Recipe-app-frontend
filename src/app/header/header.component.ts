@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject,PLATFORM_ID } from '@angular/core';
+
 
 @Component({
   selector: 'app-header',
@@ -15,11 +18,12 @@ export class HeaderComponent {
   loginUsername: string = "" //DATA GET FROM FRONTEND
 
 // dependency injection of ROUTER
-  constructor(private router:Router){}
+  constructor(private router:Router, @Inject(PLATFORM_ID) private platformId:object){}
 
 //user name displaying
 
   ngOnInit() {      // for rendering we use angular lifecycle hooks ngOnInit
+    if (isPlatformBrowser(this.platformId)) {
     if (sessionStorage.getItem("token") && sessionStorage.getItem("user")) { //after login token and user is stored in sessionStorage(ie, frontend)
       this.isLoggedin = true  //token is get ,then true
       // here we use JSON.parse to get data from object(during data passed as object by JSON.stringify)
@@ -29,16 +33,18 @@ export class HeaderComponent {
       this.loginUsername = " " // no usrname get
     }
   }
+}
 
 
 //logout button
 
 logOut(){
-  sessionStorage.clear()
+  if (isPlatformBrowser(this.platformId)) {
+  sessionStorage.clear();
     this.loginUsername=" "
     this.isLoggedin=false
     this.router.navigateByUrl("/")
-  
+  }
 }
 
 

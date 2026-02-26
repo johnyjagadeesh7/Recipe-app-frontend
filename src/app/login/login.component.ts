@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../service/api.service';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject,PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,7 @@ export class LoginComponent {
   
     // DEPENDENCY INJECTION(1.API 2.FORMbuilder 3.Angular Router-for navigate to particular pg)
   
-    constructor(private fb:FormBuilder,private api:ApiService,private router:Router){
+    constructor(private fb:FormBuilder,private api:ApiService,private router:Router, @Inject(PLATFORM_ID) private platformId:object){
       this.loginForm=this.fb.group({
         
         email:['',[Validators.required,Validators.email]],
@@ -35,8 +37,11 @@ export class LoginComponent {
         }
         this.api.loginAPI(reqBody).subscribe({
           next:(res:any)=>{
-            sessionStorage.setItem("user",JSON.stringify(res.existingUser))   //herev used sessionstorage to store user and token
-            sessionStorage.setItem("token",res.token)
+            if (isPlatformBrowser(this.platformId)) {
+               sessionStorage.setItem("user",JSON.stringify(res.existingUser));   //herev used sessionstorage to store user and token
+               sessionStorage.setItem("token",res.token);
+            }
+           
             this.loginForm.reset()
             //this.router.navigateByUrl('/')  ......//navigate to base pg,we need to go admindashboard pg while admin logins
             if(res.existingUser.role=='user'){ //here we used "role" which is specified in model

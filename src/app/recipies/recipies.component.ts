@@ -5,6 +5,8 @@ import  {FormsModule} from '@angular/forms';
 import { SearchPipe } from '../pipes/search.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject,PLATFORM_ID } from '@angular/core';
 
 
 @Component({
@@ -26,7 +28,7 @@ export class RecipiesComponent {
   p:number=1;  //for pagination...after loading page goes to 1
 
   //
-  constructor(private api: ApiService,private router:Router) { }    // for use of api call injected api file from service
+  constructor(private api: ApiService,private router:Router, @Inject(PLATFORM_ID) private platformId:object) { }    // for use of api call injected api file from service
 
   //hook used to load data in dom
   ngOnInit() {
@@ -54,6 +56,7 @@ filterRecipes(key:string,value:string){
 
 // image on (click) fn to goto view recipe pg for clicked recipe content in detail
 viewRecipe(recipeId:string){ //recipe original id is stored to (recipeId)
+  if (isPlatformBrowser(this.platformId)) {
   if(sessionStorage.getItem("token")){//token is there (ie,islogined only use this feature...to view each reacipe by clicking img on all-recipes)
     this.router.navigateByUrl(`view/${recipeId}/recipies`)
   }else{
@@ -61,6 +64,6 @@ viewRecipe(recipeId:string){ //recipe original id is stored to (recipeId)
   }
 
 }
-
+}
 
 }

@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { ApiService } from '../../service/api.service';
 import { Router } from '@angular/router';
 import * as Highcharts from 'highcharts';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject,PLATFORM_ID } from '@angular/core';
+
 
 
 @Component({
@@ -26,7 +29,7 @@ Highcharts: typeof Highcharts = Highcharts;
 
 
 
-constructor(private api:ApiService,private router:Router){}
+constructor(private api:ApiService,private router:Router, @Inject(PLATFORM_ID) private platformId:object){}
 //chart
   chartOptions: Highcharts.Options = {
   chart:{
@@ -120,11 +123,12 @@ menuBtnClick(){
 
 //logout from admin dashboard
 logOut(){
+  if (isPlatformBrowser(this.platformId)) {
   sessionStorage.clear()
   this.router.navigateByUrl('/')
 }
 
-
+}
 
 
 }
