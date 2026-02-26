@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';//for deploy website
 
 @Injectable({
   providedIn: 'root'
@@ -7,12 +8,16 @@ import { Injectable } from '@angular/core';
 export class ApiService {
 
 
+  //deploy on vercel
+  private server_url = environment.apiUrl; //this will switch to render url on vercel
+
+
 
   //dependency injection by constructor....we have to inject httpclient
   constructor(private http: HttpClient) { }
 
-  // Api call to serve url(backend url)
-  server_url = "http://localhost:4000"
+  // Api call to server url for local use(backend url)
+  // server_url = "http://localhost:4000".....need this before deploying in versel
 
 
 
