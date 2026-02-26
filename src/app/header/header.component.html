@@ -1,0 +1,54 @@
+<nav class="navbar container navbar-expand-lg bg-success">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light fw-bolder fs-4" routerLink="">
+      <img src="https://w7.pngwing.com/pngs/378/818/png-transparent-cooking-vegetables-pot-seasoning.png"
+        style="width: 50px" alt="" />Cook-Book</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/all-recipies">Recipies</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/about">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/contact">Contact</a>
+        </li>
+      </ul>
+
+      <div class="dropdown">
+        <button class="btn btn-light bg-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class="fa-solid fa-user-large"></i>
+
+          @if (isLoggedin) {
+          <span class="text-light fw-bolder">Hi {{ loginUsername }}</span>
+          }
+        </button>
+
+        <ul class="dropdown-menu">
+
+          @if (isLoggedin) {
+          <li>
+            <a class="dropdown-item" routerLink="/saved-recipies">Saved-Recipies</a>
+          </li>
+          <li><button class="dropdown-item" (click)="logOut()">Logout</button></li>
+
+          } @else {
+          <li><a class="dropdown-item" routerLink="/login">Login</a></li>
+          <li>
+            <a class="dropdown-item" routerLink="/register">Register</a>
+          </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,63 @@
+.recipe-footer {
+  background-color: #9fe1a4; 
+  border-top: 1px solid #eee;
+  color: #1100ad;
+
+  .brand-text {
+    font-family: 'Playfair Display', serif; 
+    font-weight: 700;
+    color: #fcfcfc;
+    font-size: 3.5rem;
+  }
+
+  .footer-links a {
+    color: #365d80;
+    font-size: 1rem;
+    transition: color 0.2s ease-in-out;
+    line-height: 2;
+
+    &:hover {
+      color: #d4403a;
+      
+    }
+  }
+
+  .newsletter-text-elegant{
+   font-family: 'Playfair Display', serif;
+   font-style: italic;
+   font-size: .95rem;
+   color: #3b4a15;
+
+   .highlight {
+    color: #d9534f; 
+    font-weight: 600;
+    border-bottom: 2px solid #ee9313; 
+  }
+  }
+
+  .btn-recipe {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+
+    &:hover {
+      background-color: #c9302c;
+    }
+  }
+
+  .newsletter-input input {
+    border-color: #230202;
+    &:focus {
+      border-color: #daed05;
+    }
+  }
+
+  .social-links a {
+    color: #365671;
+    font-size: 1.8rem;
+    &:hover {
+      color: #ff0019;
+    }
+  }
+}

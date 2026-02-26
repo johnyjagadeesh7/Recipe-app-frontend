@@ -1,0 +1,169 @@
+<app-header></app-header>
+<div class="container w-100">
+    <div class="row bg-success p-5">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4 mt-5 text-light fw-bolder">
+            <h1>Most easiest way to make your Favourite Dish</h1>
+            <p>Explore 100+ recipes in your hand...</p>
+            <h2 style="font-size:40px;"class="text-warning fw-bolder">Eat</h2>
+            <h3 style="font-size:35px;"class="text-warning fw-bolder">Cook</h3>
+            <h5 style="font-size:30px;"class="text-warning fw-bolder">Repeat</h5>
+            <a routerLink="/all-recipies" class="btn btn-warning text-light fw-bolder">Explore Our Recipes</a>
+        </div>
+         
+        <div class="col-lg-6">
+            <img style="width:500px;" class="food-img" src="assets/img1.png" alt="">
+        </div>
+    </div>
+
+    <!-- popular recipes -->
+     <div class="my-3 p-5">
+        <h1>Popular Recipes of the Week</h1>
+        <div class="d-flex justify-content-between">
+            <p>Our most popular recipes of the week</p>
+            <a routerLink="/all-recipies">view all</a>
+        </div>
+        <div class="row my-3">
+            <!--  here used for to get recipe data through api from database -->
+            @for (recipe of allRecipes; track $index) {  
+                <div class="col-lg-4 d-flex">
+                <div class="p-3">
+                    <!-- here use ppty binding to get data -->
+                    <img width="70%" [src]="recipe.image" alt="">
+                    <div class="card-body">
+                        <!-- here use interpolation -->
+                        <h4>{{recipe.name}}</h4>
+                    </div>
+                </div>
+            </div>
+            }
+            <div class="col-lg-8">
+                
+            </div>
+        </div>
+     </div>
+    <!-- banner -->
+     <div style="height: 400px;background-repeat:no-repeat;background-size:cover;
+     background-image:url(../../assets/img3.webp);"class="row align-items-center my-5">
+     
+     <div class="col-lg-6"></div>
+
+     <div class="col-lg-6">
+        <div class="bg-light rounded p-3 w-75">
+            <h5 class="text-warning">50+ Recipes that quick and fast</h5>
+            <p class="text-dark mt-3">Find the perfect food ideas to start your day...</p>
+        </div>
+     </div>
+
+     </div>
+
+     <!-- download -->
+
+     <div style="height: 500px;"class="my-3 row text-light align-items-center bg-success rounded p-5">
+        <div class="col-lg-6">
+            <img style="width: 400px;margin-left: 100px;" src="../../assets/img4.png" alt="">
+        </div>
+        <div class="col-lg-6 text-center">
+            <h1>Download App</h1>
+            <h5>Download the app from APP STORE or  <br>
+            google play for better experience</h5>
+            <div class="d-flex justify-content-md-evenly align-items-center">
+                <img width="200px" src="../../assets/img5.png" alt="">
+                <img width="200px" src="../../assets/img6.png" alt="">
+            </div>
+        </div>
+     </div>
+
+     <!-- client testimonials -->
+      <div class="text-center my-5">
+        <h1>Client Testimonials</h1>
+
+        <marquee>
+            <div class="d-flex my-5">
+                <!-- showing all testimonials by iterating with for -->
+                @for (item of allTestimonials; track $index) {
+                <div class="rounded border w-25 p-2 shadow me-3">
+                    <h5>{{item.name}}</h5>
+                    <p style="white-space:normal;width:100%;text-align:justify;">{{item.message}}</p>
+                </div>
+            }
+            </div>
+        </marquee>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

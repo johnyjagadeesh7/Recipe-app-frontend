@@ -1,0 +1,30 @@
+<app-header></app-header>
+<div class="container my-5">
+    <h1 class="text-warning fw-bolder">Your Saved-Recipies</h1>
+    <div class="row my-5">
+        <!-- condn: if allRecipes(ie,saved recipes) having recipes more than '0' can show that recipes-->
+        @if (allRecipes.length > 0) { 
+            <!-- itterating recipes from "allRecipes ,if saved recipes more than 0" -->
+        @for (recipe of allRecipes; track $index) {
+        <div class="col-lg-3">
+            <div class="p-3">
+                <img  class="card-img-top rounded" width="100%"
+                    [src]="recipe.image" alt="" />
+                <div class="d-flex justify-content-between mt-2">
+                    <h5 class="text-success">{{recipe.recipeName}}</h5>
+                    <!-- trash or delete button setup(_id..backend date collection recipe...in keyword"_id" which store recipe id) -->
+                    <button (click)="removeRecipe(recipe._id)" class="btn">
+                        <i class="fa-solid fa-trash text-danger"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        }
+        <!-- if savedRecipes less than 0,there is no recipe added -->
+        } @else {
+        <div class="fw-bolder text-center text-danger"> 
+           <h3>your recipie collection is empty...</h3>
+        </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 bg-success">
+            <app-sidebar></app-sidebar>
+        </div>
+        
+
+        <div class="col-10">
+            <h1 class="text-center text-primary fw-bolder">All-Users List</h1>
+           
+            <div class="d-flex justify-content-between my-3">
+                <!-- navigate to manage-recipe component(add recipe details form)-->
+                <a class="btn btn-primary" routerLink="/admin/recipes/add">+Add more Recipe</a>
+                 <!-- search bar -->
+                <input type="text" [(ngModel)]="SearchKey" placeholder="search by Name" class="form-control w-25">
+                
+            </div>
+
+            <table class="table shadow my-5">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Cuisine</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of allRecipes|search:SearchKey; track $index; let i=$index) {
+                        <tr>
+                            <td>{{i+1}}</td>
+                            <td>{{item.name}}</td>
+                            <td><img [src]=item.image width="100px" height="100px" alt=""></td>
+                            <td>{{item.cuisine}}</td>
+                            <td>
+                                <!-- edit and modify or update recipe...by click navigate to manage recipe component(same component of recipe detials form) in adminside -->
+                                <div class="d-flex">
+                                    <!-- same component but different url set dynamicaly -->
+                                <button class="btn text-primary" [routerLink]="['/admin/recipes/edit',item._id]"><i class="fa-regular fa-pen-to-square"></i></button>
+                                <!-- delete recipe ,from for loop by itemand their id-->
+                                <button (click)="deleteRecipes(item._id)" class="btn"><i class="fa-solid fa-trash text-danger"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <!-- setup no recipes found -->
+
+
+            @if ((allRecipes|search:SearchKey).length==0) {
+                <div class="text-danger fw-bolder">
+                    No Recipes Found....
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
