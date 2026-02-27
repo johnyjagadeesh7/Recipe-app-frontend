@@ -24,7 +24,8 @@
             
               
               "src/assets",
-              "src/favicon"
+              "src/favicon",
+              "src/vercel.json"
             
                 
               

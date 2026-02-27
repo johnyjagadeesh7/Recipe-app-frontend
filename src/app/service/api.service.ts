@@ -30,7 +30,7 @@ export class ApiService {
   //writing API for allrecipes and this is used in every  component.ts for api call
   // also use for get allrecipes in admin side
   getAllRecipeAPI() {
-    return this.http.get(`${this.server_url}/all-recipies`)
+    return this.http.get(`${this.server_url}/all-recipies`) 
   }
 
 
