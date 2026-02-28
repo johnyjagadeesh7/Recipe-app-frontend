@@ -25,7 +25,7 @@
               
               "src/assets",
               "src/favicon",
-              "vercel.json"
+              {"glob": "vercel.json","input": "src","output": "/"}
             
             
                 
