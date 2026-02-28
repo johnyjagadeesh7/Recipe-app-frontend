@@ -23,8 +23,8 @@
             "assets": [
 
               "src/assets",
-              "src/favicon",
-              "src/vercel.json"
+              "src/favicon"
+   
                 
             ],
             "styles": [
