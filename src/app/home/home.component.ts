@@ -36,7 +36,7 @@ export class HomeComponent {
 
        getHomeRecipes(){
         this.api.getAllRecipeAPI().subscribe((res:any)=>{
-          this.allRecipes=res.slice(0,6)   //slice is used to limit data to desired number
+          this.allRecipes=res.slice(0,8)   //slice is used to limit data to desired number
           console.log(this.allRecipes);
 
         })

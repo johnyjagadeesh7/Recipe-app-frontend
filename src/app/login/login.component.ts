@@ -2,19 +2,21 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../service/api.service';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, NgClass } from '@angular/common';
 import { Inject,PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,NgClass],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
   // ppty
     loginForm:FormGroup
+
+    showPassword: boolean = false;
   
   
     // DEPENDENCY INJECTION(1.API 2.FORMbuilder 3.Angular Router-for navigate to particular pg)
@@ -23,7 +25,7 @@ export class LoginComponent {
       this.loginForm=this.fb.group({
         
         email:['',[Validators.required,Validators.email]],
-        password:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]],
+        password:['',[Validators.required,Validators.pattern('[a-zA-Z0-9@]*')]],
   
       })
   
@@ -57,5 +59,13 @@ export class LoginComponent {
         })
       }
     }
+
+
+togglePassword() {
+  this.showPassword = !this.showPassword;
+}
+
+
+
 
 }

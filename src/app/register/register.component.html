@@ -1,49 +1,83 @@
-<div class="container">
-    <div style="height:100vh;" class="row align-items-center">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-4">
+<div class="container py-4">
+
+    <div class="row align-items-center min-vh-100">
+
+        <!-- Register Form -->
+        <div class="col-lg-6 col-md-8 col-12 mx-auto">
+
             <h1 class="text-center">Register</h1>
-            <p class="text-center"> Explore 100+ RECIPIES in your hand...</p>
-            <div class="shadow border rounded p-5 mt-5">
+            <p class="text-center">
+                Explore 100+ RECIPIES in your hand...
+            </p>
+
+            <div class="shadow border rounded p-4 p-md-5 mt-4">
+
                 <div class="mb-3 text-center">
-                    <h3><i class="fa-solid fa-utensils fa-flip me-2 fs-2"></i>Flavour Fusion</h3>
+                    <h3>
+                        <i class="fa-solid fa-utensils fa-flip me-2 fs-2"></i>
+                        Flavour Fusion
+                    </h3>
                 </div>
 
-                <form [formGroup]="registerForm" (ngSubmit)="register()"> 
-                    <div class="mb-3 text-center"><input type="text" placeholder="enter your username" 
-                    class="form-control" name="name" formControlName="name">
+                <form [formGroup]="registerForm" (ngSubmit)="register()">
+                    <!-- name -->
+                    <div class="mb-3">
+                        <input type="text"
+                               placeholder="Enter your username"
+                               class="form-control"
+                               name="name"
+                               formControlName="name">
                     </div>
 
                     <!--to get invalid username ,touched is used even we touched field and not enter data...then display invalidusername -->
-
                     @if(registerForm.get("name")?.errors && registerForm.get("name")?.touched) {
-                        <div class="text-danger fw-bolder">
+                        <div class="text-danger fw-bold mb-2">
                             *Invalid Username
                         </div>
                     }
-
-                    <div class="mb-3 text-center"><input type="email" placeholder="enter your email" 
-                    class="form-control" name="email" formControlName="email">
+                    <!-- email -->
+                    <div class="mb-3">
+                        <input type="email"
+                               placeholder="Enter your email"
+                               class="form-control"
+                               name="email"
+                               formControlName="email">
                     </div>
 
-                       @if (registerForm.get("email")?.errors && registerForm.get("email")?.touched) {
-                        <div class="text-danger fw-bolder">
+                    @if (registerForm.get("email")?.errors && registerForm.get("email")?.touched) {
+                        <div class="text-danger fw-bold mb-2">
                             *Invalid email
                         </div>
                     }
+                    <!-- password with toggle-->
+                    <div class="mb-3 position-relative">
+                        <input [type]="showPassword ? 'text' : 'password'"
+                               placeholder="Enter your password"
+                               class="form-control pe-5"
+                               name="password"
+                               formControlName="password">
 
+                            <button type="button"
+                                   class="btn position-absolute top-50 end-0 translate-middle-y me-2 border-0 bg-transparent"
+                                  (click)="togglePassword()">
 
-                    <input type="password" placeholder="enter your password" 
-                    class="form-control" name="password" formControlName="password">
-                    
-                       @if (registerForm.get("password")?.errors && registerForm.get("password")?.touched) {
-                        <div class="text-danger fw-bolder">
+                            <i class="fa-solid"
+                             [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'">
+                            </i>
+
+                        </button>
+                    </div>
+
+                    @if (registerForm.get("password")?.errors && registerForm.get("password")?.touched) {
+                        <div class="text-danger fw-bold mb-2">
                             *Invalid password
                         </div>
                     }
 
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-success">Register</button>
+                        <button type="submit" class="btn btn-success">
+                            Register
+                        </button>
                     </div>
 
                 </form>
@@ -51,16 +85,23 @@
             </div>
         </div>
 
-        <div class="col-lg-2"></div>
-        <div class="col-lg-4 p-3">
+
+        <!-- Info Section -->
+        <div class="col-lg-6 col-12 mt-5 mt-lg-0 text-center text-lg-start">
+
             <h1>Create Account</h1>
+
             <h5>What will you get?</h5>
-            <ul class="mt-5">
-                <li>Different Recipies</li>
-                <li>Easy way to make Recipies</li>
-                <li>Save your favourite Recipies</li>
-                <li>Download your Recipies</li>
+
+            <ul class="mt-4 list-unstyled">
+                <li class="mb-2">✔ Different Recipes</li>
+                <li class="mb-2">✔ Easy way to make Recipes</li>
+                <li class="mb-2">✔ Save your favourite Recipes</li>
+                <li class="mb-2">✔ Download your Recipes</li>
             </ul>
+
         </div>
+
     </div>
+
 </div>

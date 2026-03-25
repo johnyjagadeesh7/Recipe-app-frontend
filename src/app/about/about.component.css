@@ -1,0 +1,27 @@
+.about-hero{
+
+min-height:250px;
+
+}
+
+
+.about-text{
+
+text-align:justify;
+
+}
+
+
+.about-img{
+
+max-width:450px;
+width:100%;
+
+}
+
+
+.about-list li{
+
+margin-bottom:8px;
+
+}

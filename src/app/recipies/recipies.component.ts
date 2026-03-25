@@ -43,6 +43,14 @@ export class RecipiesComponent {
     this.api.getAllRecipeAPI().subscribe((res: any) => {
       this.allRecipes = res     //here not used slice (limit data to desired number) bec here need all data items to view
       this.dummyRecipes=this.allRecipes
+
+
+    // ✅ Reset search
+    this.searchkey = "";
+
+    // ✅ Reset pagination
+    this.p = 1;
+
       console.log(this.allRecipes); 
 
     })
@@ -51,6 +59,9 @@ export class RecipiesComponent {
 // for filtering recipe on mealtype and cuisine type
 filterRecipes(key:string,value:string){
   this.allRecipes=this.dummyRecipes.filter((item:any)=>item[key].includes(value))
+
+    // reset page
+  this.p = 1;
 }
 
 

@@ -1,10 +1,98 @@
 
 .food-img{
     transition: 2sec;
+    max-width: 500px;
+    width: 100%;
 }
 
 .food-img:hover{
     scale: 1.2;
     transition: ease-in-out 1s;
     rotate: 180deg;
+}
+
+.store-img{
+    max-width: 200px;
+    width: 100%;
+}
+
+.banner-section{
+    background-image:url("../../assets/img3.webp");
+    background-size: cover;
+    background-position:top;
+    min-height:200px;
+    padding: 150px;
+}
+
+.banner-box{
+    max-width:400px;
+}
+
+.testimonial-title{
+
+  font-size: 36px;
+  font-weight: bold;
+  color: #2b2f2d;
+  text-align: center;
+  margin-bottom: 40px;
+
+}
+
+.testimonial-title::after{
+
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: #ffc107; /* Bootstrap warning */
+
+  display: block;
+  margin: 10px auto;
+  border-radius: 5px;
+
+}
+
+
+
+
+
+
+
+/* full code for marquee scrolling of client testimonials */
+
+/* wrapper hides overflow */
+.testimonial-wrapper{
+  overflow: hidden;
+  width: 100%;
+}
+
+/* moving container */
+.testimonial-track{
+  display: flex;
+  gap: 20px;
+  animation: scroll 10s linear infinite;
+}
+
+/* card style */
+.testimonial-card{
+  min-width: 350px;
+  max-width: 350px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.testimonial-track:hover{
+  animation-play-state: paused;
 }

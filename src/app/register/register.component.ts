@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiService } from '../service/api.service';
 import { Router } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,NgClass],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -15,6 +16,8 @@ export class RegisterComponent {
   // ppty
   registerForm:FormGroup
 
+  showPassword: boolean = false;
+
 
   // DEPENDENCY INJECTION(1.API 2.FORMbuilder 3.Angular Router-for navigate to particular pg)
 
@@ -22,7 +25,7 @@ export class RegisterComponent {
     this.registerForm=this.fb.group({
       name:['',[Validators.required,Validators.pattern('[a-zA-Z]*')]],
       email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]],
+      password:['',[Validators.required,Validators.pattern('[a-zA-Z0-9@]*')]],
 
     })
 
@@ -55,5 +58,8 @@ export class RegisterComponent {
   }
 
 
+togglePassword() {
+  this.showPassword = !this.showPassword;
+}
 
 }
